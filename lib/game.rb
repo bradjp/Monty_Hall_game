@@ -6,4 +6,8 @@ class Game
     @boxes = ['Goat', 'Car', 'Goat']
   end
 
+  def shuffle_boxes
+    @boxes.shuffle
+  end
+
 end
