@@ -31,10 +31,15 @@ describe Game do
     end
   end
   describe '#show_the_goat' do
-    it 'Reveals a hidden goat' do
+    it 'Reveals a hidden goat, if a goat is chosen' do
       subject.select_box(1)
       expect(subject.show_the_goat).to eq('Box 3 contains a goat.
       Would you like to swap to box 2, or stick with 1?')
+    end
+    it 'Reveals a hidden goat, if the car is chosen' do
+      subject.select_box(2)
+      expect(subject.show_the_goat).to eq('Box 1 contains a goat.
+      Would you like to swap to box 3, or stick with 2?')
     end
   end
 end

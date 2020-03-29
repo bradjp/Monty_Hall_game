@@ -21,8 +21,11 @@ class Game
   end
 
   def show_the_goat
-    if @chosen_box == 'Car'
-      #show one of the goats
+    if @shuffled_boxes[@chosen_box] == 'Car'
+      @shuffled_boxes.delete(@chosen_box)
+      goats = @shuffled_boxes.keys
+      "Box #{goats[0]} contains a goat.
+      Would you like to swap to box #{goats[1]}, or stick with #{@chosen_box}?"
     else
       @shuffled_boxes.delete(@chosen_box)
       "Box #{@shuffled_boxes.key('Goat')} contains a goat.
