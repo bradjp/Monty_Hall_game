@@ -6,6 +6,7 @@ class Game
     @boxes = ['Goat', 'Car', 'Goat']
     @chosen_box = nil
     @shuffled_boxes = {1 => 'Goat', 2 => 'Car', 3 => 'Goat'}
+    @tentative_choice = nil
   end
 
   def shuffle_boxes
@@ -28,6 +29,14 @@ class Game
     end
   end
 
+  def implement_choice(choice)
+    if choice == 'Yes'
+      @tentative_choice == 'Car' ? 'Oh no...You chose a goat!' : 'You chose the car!'
+    else
+      @tentative_choice == 'Car' ? 'You chose the car!' : 'Oh no...You chose a goat!'
+    end
+  end
+
   private
 
   def update_shuffled_boxes
@@ -35,6 +44,7 @@ class Game
   end
 
   def react_to_car_choice
+    @tentative_choice = @shuffled_boxes[@chosen_box]
     @shuffled_boxes.delete(@chosen_box)
       goats = @shuffled_boxes.keys
       "Box #{goats[0]} contains a goat.
@@ -42,6 +52,7 @@ class Game
   end
 
   def react_to_goat_choice
+    @tentative_choice = @shuffled_boxes[@chosen_box]
     @shuffled_boxes.delete(@chosen_box)
     "Box #{@shuffled_boxes.key('Goat')} contains a goat.
       Would you like to swap to box #{@shuffled_boxes.key('Car')}, or stick with #{@chosen_box}?"

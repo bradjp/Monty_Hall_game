@@ -42,4 +42,28 @@ describe Game do
       Would you like to swap to box 3, or stick with 2?')
     end
   end
+  describe '#implement_choice - choice Yes' do
+      it 'swaps to a car from a goat' do
+        subject.select_box(1)
+        subject.show_the_goat
+        expect(subject.implement_choice('Yes')).to eq('You chose the car!')
+      end
+      it 'swaps to a goat from the car' do
+        subject.select_box(2)
+        subject.show_the_goat
+        expect(subject.implement_choice('Yes')).to eq('Oh no...You chose a goat!')
+      end
+  end
+  describe '#implement_choice - choice No' do
+      it 'sticks with a goat' do
+        subject.select_box(1)
+        subject.show_the_goat
+        expect(subject.implement_choice('No')).to eq('Oh no...You chose a goat!')
+      end
+      it 'sticks with the car' do
+        subject.select_box(2)
+        subject.show_the_goat
+        expect(subject.implement_choice('No')).to eq('You chose the car!')
+      end
+  end
 end
