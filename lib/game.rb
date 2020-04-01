@@ -29,7 +29,7 @@ class Game
     end
   end
 
-  def implement_choice(choice)
+  def implement_switch_decision(choice)
     if choice == 'Yes'
       @tentative_choice == 'Car' ? 'Oh no...You chose a goat!' : 'You chose the car!'
     else
@@ -44,18 +44,21 @@ class Game
   end
 
   def react_to_car_choice
-    @tentative_choice = @shuffled_boxes[@chosen_box]
-    @shuffled_boxes.delete(@chosen_box)
+      process_choice
       goats = @shuffled_boxes.keys
       "Box #{goats[0]} contains a goat.
       Would you like to swap to box #{goats[1]}, or stick with #{@chosen_box}?"
   end
 
   def react_to_goat_choice
-    @tentative_choice = @shuffled_boxes[@chosen_box]
-    @shuffled_boxes.delete(@chosen_box)
+    process_choice
     "Box #{@shuffled_boxes.key('Goat')} contains a goat.
       Would you like to swap to box #{@shuffled_boxes.key('Car')}, or stick with #{@chosen_box}?"
+  end
+
+  def process_choice
+    @tentative_choice = @shuffled_boxes[@chosen_box]
+    @shuffled_boxes.delete(@chosen_box)
   end
 
 end
