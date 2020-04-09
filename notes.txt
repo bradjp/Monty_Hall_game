@@ -4,3 +4,19 @@ Implement game method to run as a game.
 
 Requires rewriting of the tests and code, which currently put out their own text return values,
 and so interfere with the flow.
+
+Possible flow -
+
+initialize
+
+shuffle - notify
+
+offer selection 
+
+notify
+
+rewrite show goat method to implement the 'logic'
+
+offer choice - implement
+
+announce outcome
