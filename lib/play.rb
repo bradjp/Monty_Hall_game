@@ -16,5 +16,5 @@ def play
 
   puts "You have chosen box #{box}"
 
-  game.show_the_goat
+  # game.show_the_goat
 end
